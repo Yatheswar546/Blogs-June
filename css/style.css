@@ -5,9 +5,6 @@
     box-sizing: border-box;
     font-family: 'Hanken Grotesk', sans-serif;
 }
-body{
-    /* overflow-x: hidden; */
-}
 
 /************************ NAVBAR ***************************/
 nav.navbar{
@@ -17,8 +14,8 @@ nav.navbar{
     width: 100%;
     justify-content:space-between; 
     overflow: hidden;
-    position: fixed;
-    z-index: 100;
+    position: fixed; 
+    z-index: 1000;
 }
 .navbar .logo h1{
     font-size: 50px;
@@ -63,6 +60,8 @@ nav.navbar{
         height: 100%;
         width: 300px;
         transition: all ease 1s;
+        position: fixed;
+        z-index: 10000;
     }
     .navbar ul.links.active{
         right: -100px;
@@ -111,7 +110,6 @@ nav.navbar{
 .slide{
     display: none;
 }
-
 
 /*********** BLOGS SECTION **************/
 .blogs-section{

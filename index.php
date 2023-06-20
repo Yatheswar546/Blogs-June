@@ -1,3 +1,9 @@
+<?php
+
+    session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +42,14 @@
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Blogs</a></li>
-            <li><a href="./login.html">Login</a></li>
+
+            <?php if(isset($_SESSION["id"])): ?>
+                <li><a href="./admin-panel/blogs/index.php">Create a Blog</a></li>
+                <li><a href="./logout.php">LOGOUT</a></li>
+            <?php else: ?>
+                <li><a href="./login.php">Login</a></li>
+            <?php endif; ?>
+
         </ul>
     </nav>
 
@@ -166,7 +179,7 @@
     </div>
 
     <!---------- Footer -------------->
-     <footer class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="row">
                 <div class="footer-col">
@@ -209,7 +222,6 @@
             </div>
         </div>
     </footer>
-
 
 
     <!-- Custom JS -->

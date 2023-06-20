@@ -80,5 +80,25 @@ input:focus{
 .recover a{
     text-decoration: none;
     color: #464657;
+}
 
+.gender{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gender div{
+    display: flex;
+    padding: 10px;
+    margin: 8px;
+}
+
+/* MESSAGES */
+.message{
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 5px;
+    background-color: red;
+    color: #fff;
 }
