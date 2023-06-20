@@ -23,12 +23,12 @@ a{
     padding: 10px;
     margin: 10px;
     width: 100px;
-    background-color: blueviolet;
+    background-color: rgb(55, 52, 57);
     border-radius: 2px;
     color: white;
 }
 .admin-btn:hover{
-    background-color: rgb(97, 3, 185);
+    background-color: rgb(21, 20, 21);
     cursor: pointer;
 }
 
@@ -84,6 +84,12 @@ a{
     height: 100%;
     padding: 40px 100px 100px;
     overflow-y: scroll;
+}
+.admin-content .button-group .home{
+    float: right;
+    width: 125px;
+    margin-top: -5px;
+    background-color: rgb(4, 116, 10);
 }
 .admin-content .page-title{
     text-align: center;

@@ -22,7 +22,7 @@ menu_close.addEventListener('click',()=>{
 });
 
 
-//////////// BANNER SLIDER
+//////////// BANNER SLIDER ////////////////////
 let flag = 0;
 
 function controller(x){
@@ -51,4 +51,9 @@ function slideshow(num){
     }
     
     slides[num].style.display = "block";
+} 
+
+/////////////////// LOGOUT ///////////////////
+function checklogout(){
+    return confirm('are you sure want to logout ?');
 } 

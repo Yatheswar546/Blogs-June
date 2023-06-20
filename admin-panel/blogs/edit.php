@@ -11,6 +11,23 @@
 
         $msg = "";
 
+        if($_SERVER["REQUEST_METHOD"] == "GET"){
+            if(!isset($_GET["id"])){
+                header("Location: index.php");
+                exit;
+            }
+
+            $id = $_GET["id"];
+            $sql = mysqli_query($db,"SELECT * FROM `blogs` WHERE id=$id");
+            $row = mysqli_fetch_assoc($sql);
+            
+            $title = $row['title'];
+            $description = $row['description'];
+            $file = $row['image'];
+            $category = $row['category'];
+        }
+
+
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             $title = $_POST["title"];
             $description = addslashes($_POST["description"]);
@@ -102,7 +119,7 @@
             </div>
 
             <div class="content">
-                <h2 class="page-title">Create a Blog</h2>
+                <h2 class="page-title">Edit the Blog</h2>
 
                 <?php
                     if(!empty($msg)){
@@ -117,15 +134,15 @@
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div>
                         <label>Title</label>
-                        <input type="text" name="title" id="" class="text-input">
+                        <input type="text" name="title" id="" class="text-input" value="<?php echo $title; ?>">
                     </div>
                     <div>
                         <label>Description</label>
-                        <textarea name="description" id="description" rows="30" cols="178"></textarea>
+                        <textarea name="description" id="description" rows="30" cols="178"> <?php echo $description; ?>+ </textarea>
                     </div>
                     <div>
                         <label>Image</label>
-                        <input type="file" name="image" class="text-input">
+                        <input type="file" name="image" class="text-input" value="<?php echo $file; ?>">
                     </div>
                     <!-- <div>
                         <label>Topic</label>
@@ -136,7 +153,7 @@
                     </div> -->
                     <div>
                         <label>Category</label>
-                        <input type="text" name="category" id="category" class="text-input">
+                        <input type="text" name="category" id="category" class="text-input" value="<?php echo $category; ?>">
                     </div>
                     <div>
                         <button type="submit" class="admin-btn btn-blg">Add Post</button>

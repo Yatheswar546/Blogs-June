@@ -56,6 +56,7 @@
             <div class="button-group">
                 <a href="./create.php" class="admin-btn btn-blg">Add Blog</a>
                 <a href="./index.php" class="admin-btn btn-blg">Manage Blogs</a>
+                <a href="../../index.php" class="home admin-btn btn-blg">Back to Home</a>
             </div>
 
             <div class="content">
@@ -79,9 +80,6 @@
                             }
                             else{
                                 while($row = mysqli_fetch_assoc($blogs)){
-                                    // echo "$row[id]"."<br>";
-                                    // echo "$row[title]"."<br>";
-                                    // echo "$row[category]"."<br>";
 
                                     echo "
                                         <tr>
@@ -89,8 +87,8 @@
                                             <td>$row[title]</td>
                                             <td><img src='../../db-images/blogs/$row[image]'></td>
                                             <td>$row[category]</td>
-                                            <td><a href='#' class='edit'>Edit</a></td>
-                                            <td><a href='#' class='delete'>Delete</a></td>
+                                            <td><a href='./edit.php?id=$row[id]' class='edit'>Edit</a></td>
+                                            <td><a href='./delete.php?id=$row[id]' class='delete' onclick='return checkdelete()'>Delete</a></td>
                                             <td><a href='#' class='publish'>View</a></td>
                                         </tr>        
                                     ";
@@ -99,40 +97,17 @@
 
                         ?>
 
-                        <!-- <tr>
-                            <td>1</td>
-                            <td>This is the title of the post</td>
-                            <td><img src="../../images/blog.jpeg" alt=""></td>
-                            <td>Yathe</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>This is the title of the post</td>
-                            <td><img src="../../images/blog.jpeg" alt=""></td>
-                            <td>Eswar</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">View</a></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>This is the title of the post</td>
-                            <td><img src="../../images/blog.jpeg" alt=""></td>
-                            <td>Rishi</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">View</a></td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
-
         </div>
-
     </div>
+
+    <script>
+        function checkdelete(){
+            return confirm('Are you sure you want to go back to home ?');
+        }
+    </script>
 
 </body>
 

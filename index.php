@@ -45,13 +45,13 @@
 
             <?php if(isset($_SESSION["id"])): ?>
                 <li><a href="./admin-panel/blogs/index.php">Create a Blog</a></li>
-                <li><a href="./logout.php">LOGOUT</a></li>
+                <li><a href="./logout.php" class="logout" onclick='return checklogout()'>LOGOUT</a></li>
             <?php else: ?>
                 <li><a href="./login.php">Login</a></li>
             <?php endif; ?>
 
         </ul>
-    </nav>
+    </nav> 
 
     <!----------------------- BANNER ---------------->
     <div class="slide-container">
@@ -225,7 +225,7 @@
 
 
     <!-- Custom JS -->
-    <script src="./js/script.js"></script>
+    <script src="./js/script.js"></script> 
 
 </body>
 

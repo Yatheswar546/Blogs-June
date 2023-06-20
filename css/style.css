@@ -5,7 +5,7 @@
     box-sizing: border-box;
     font-family: 'Hanken Grotesk', sans-serif;
 }
-
+ 
 /************************ NAVBAR ***************************/
 nav.navbar{
     display: flex;
@@ -36,6 +36,18 @@ nav.navbar{
     font-size: 20px;
     color: #fff;
     text-decoration: none;
+}
+.navbar .links li a:hover{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #000;    
+}
+.navbar .links li .logout{
+    color: rgb(238, 17, 17);
+}
+.navbar .links li .logout:hover{
+    color: rgb(240, 15, 15);
 }
 .navbar i{
     font-size: 30px;
