@@ -26,6 +26,9 @@
             $target_file = $target.basename(md5("blogid".$filename).".".$filetype);
             $file = md5("blogid".$filename).".".$filetype;
 
+            $title = mysqli_real_escape_string($db,$title);
+            $description = mysqli_real_escape_string($db,$description);
+
             do{
                 if(empty($title) || empty($description) || empty($category) || empty($file)){
                     $msg = "All Fields are required";
@@ -113,7 +116,7 @@
                         ";
                     }
                 ?>
-
+ 
                 <form action="#" method="post" enctype="multipart/form-data">
                     <div>
                         <label>Title</label>
@@ -121,7 +124,7 @@
                     </div>
                     <div>
                         <label>Description</label>
-                        <textarea name="description" id="description" rows="30" cols="178"></textarea>
+                        <textarea name="description" id="body" rows="30" cols="178"></textarea>
                     </div>
                     <div>
                         <label>Image</label>
