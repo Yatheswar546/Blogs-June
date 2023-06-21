@@ -369,3 +369,64 @@ nav.navbar {
         width: 100%;
     }
 }
+
+/***************************** SINGLE BLOG  **************************/
+.single-blog{
+    position: relative;
+    top: 100px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.single-blog .container{
+    width: 80%;
+    min-height: inherit;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.single-blog .container h1{
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+    font-size: 35px;
+}
+
+.single-blog .container img{
+    height: 300px;
+    width: 500px;
+}
+
+.single-blog .container .description{
+    padding: 18px;
+    margin: 20px;
+}
+
+.single-blog .container .author{
+    padding: 20px;
+    margin: 10px;
+    align-self: start;
+    text-align: left;
+}
+
+.single-blog .container .author h2, h3{
+    padding: 10px;
+}
+
+@media screen and (max-width: 570px) {
+    .single-blog .container img{
+        height: 250px;
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .single-blog .container img{
+        height: 200px;
+        width: 300px;
+    }
+}
