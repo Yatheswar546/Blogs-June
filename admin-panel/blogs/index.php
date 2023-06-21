@@ -90,7 +90,7 @@
                                             <td>$row[category]</td>
                                             <td><a href='./edit.php?id=$row[id]' class='edit'>Edit</a></td>
                                             <td><a href='./delete.php?id=$row[id]' class='delete' onclick='return checkdelete()'>Delete</a></td>
-                                        </tr>        
+                                        </tr>     
                                     ";
                                     $count+=1;
                                 }

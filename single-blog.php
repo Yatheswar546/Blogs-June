@@ -2,6 +2,11 @@
 
     session_start();
 
+    if(isset($_GET["id"])){
+        $id = $_GET["id"];
+        // echo $id;
+    }
+
     require_once('./config.php');
 
 ?>
@@ -18,7 +23,7 @@
     <link rel="stylesheet" href="./css/style.css">
 
     <!-- Font Awesome Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- Box Icons Link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -26,7 +31,6 @@
 </head>
 
 <body>
-
     <!----------- Navbar --------------->
     <nav class="navbar">
         <div class="logo">
@@ -39,9 +43,9 @@
             <div class="menu_close">
                 <i class='bx bx-x'></i>
             </div>
-            <li><a href="#">Home</a></li>
+            <li><a href="./index.php">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#blogs">Blogs</a></li>
+            <li><a href="./index.php#blogs">Blogs</a></li>
 
             <?php if(isset($_SESSION["id"])): ?>
                 <li><a href="./admin-panel/blogs/index.php">Create a Blog</a></li>
@@ -51,66 +55,43 @@
             <?php endif; ?>
 
         </ul>
-    </nav> 
+    </nav>
 
-    <!----------------------- BANNER ---------------->
-    <div class="slide-container">
-        <div class="slide">
-            <img src="./images/banner1.jpg" alt="">
-            <div class="caption">Caption Text 1</div>
-        </div>
-        <div class="slide">
-            <img src="./images/banner2.jpeg" alt="">
-            <div class="caption">Caption Text 2</div>
-        </div>
-        <div class="slide">
-            <img src="./images/banner3.jpeg" alt="">
-            <div class="caption">Caption Text 3</div>
-        </div>
-        <div class="slide">
-            <img src="./images/banner4.jpg" alt="">
-            <div class="caption">Caption Text 4</div>
-        </div>
-        <span class="arrow prev" onclick="controller(-1)">&#10094;</span>
-        <span class="arrow next" onclick="controller(1)">&#10095;</span>
-    </div>
 
-    <!--------- Blogs Section ----------->
-    <div class="blogs-section" id="blogs">
+    <!------------------ SINGLE BLOG  ---------------->
+    <div class="single-blog">
         <div class="container">
-            <div class="blogs">
-                <div class="heading">
-                    <h1>Blogs</h1>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h4>
-                </div>
 
-                <div class="cards">
- 
-                    <?php
+            <?php
+                $blog = mysqli_query($db, "SELECT * FROM `blogs` WHERE id=$id");
 
-                        $blogs = mysqli_query($db,"SELECT * FROM `blogs`");
+                if(!$blog){
+                    die("Query Failed...".mysqli_error($db));
+                }
+                else{
+                    $row = mysqli_fetch_assoc($blog);
+                    
+                    // Original date string
+                    $original_date = $row['createdat'];
 
-                        if(!$blogs){
-                            die("Query Failed...".mysqli_error($db));
-                        } 
-                        else{
-                            while($row = mysqli_fetch_assoc($blogs)){
-                                echo "
-                                    <div class='card'>
-                                        <img src='./db-images/blogs/$row[image]' alt=''>
-                                        <p class='tagline'>$row[category]</p>
-                                        <h4 class='title'>$row[title]</h4>
-                                        <p class='content'>To read the complete blog click on Read More below.....</p>
-                                        <a href='./single-blog.php?id=$row[id]'>Read More</a>
-                                    </div>
-                                ";
-                            }
-                        }
+                    // Convert the original date string to a DateTime object
+                    $original_date = new DateTime($original_date);
 
-                    ?>
-                     
-                </div>
-            </div>
+                    // Format the DateTime object into the desired string format
+                    $new_date = $original_date->format("d-m-Y");
+                    
+                    echo "
+                        <h1>$row[title]</h1>
+                        <img src='./db-images/blogs/$row[image]' alt=''>
+                        <div class='description'>$row[description]</div>
+                        <div class='author'>
+                            <h2>Blog by : $row[author]</h2>
+                            <h3>Posted on : $new_date</h3>
+                        </div>
+                    ";
+                }
+            ?>
+
         </div>
     </div>
 
@@ -159,9 +140,8 @@
         </div>
     </footer>
 
-
     <!-- Custom JS -->
-    <script src="./js/script.js"></script> 
+    <script src="./js/script.js"></script>
 
 </body>
 
