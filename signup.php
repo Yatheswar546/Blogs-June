@@ -40,7 +40,13 @@
                         $sql = mysqli_query($db, "INSERT INTO `users`(`name`, `phone`, `email`, `gender`, `image`, `password`, `userid`) VALUES ('$name','$phone','$email','$gender','$file','$password','$userid')");
                         if($sql){
                             $msg = "Success";
-                            header("Location: login.php");
+                            // header("Location: login.php");
+                            // exit;
+                            session_start();
+                            $_SESSION["id"] = $row["id"];
+                            $_SESSION["name"] = $row["name"];
+                            $_SESSION["image"] = $row["image"];
+                            header("Location: index.php");
                             exit;
                         }
                         else{
@@ -58,7 +64,7 @@
         }while(false);
     }
 
-?>
+?> 
 
 
 <!DOCTYPE html>

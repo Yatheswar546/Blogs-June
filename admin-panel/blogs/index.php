@@ -37,6 +37,7 @@
     <div class="main">
         <!------------- Top Search Bar ---------------------->
         <div class="topbar">
+            
             <div class="name">
                 Welcome <?php echo $name; ?>
             </div>
@@ -73,25 +74,25 @@
 
                         <?php
 
-                            $blogs = mysqli_query($db,"SELECT * FROM `blogs`");
+                            $blogs = mysqli_query($db,"SELECT * FROM blogs WHERE author = '$name'");
 
                             if(!$blogs){
                                 die("Invalid Query !!!".mysqli_error($db));
                             }
-                            else{
+                            else{   
+                                $count = 1;
                                 while($row = mysqli_fetch_assoc($blogs)){
-
                                     echo "
                                         <tr>
-                                            <td>$row[id]</td>
+                                            <td>$count</td>
                                             <td>$row[title]</td>
                                             <td><img src='../../db-images/blogs/$row[image]'></td>
                                             <td>$row[category]</td>
                                             <td><a href='./edit.php?id=$row[id]' class='edit'>Edit</a></td>
                                             <td><a href='./delete.php?id=$row[id]' class='delete' onclick='return checkdelete()'>Delete</a></td>
-                                            <td><a href='#' class='publish'>View</a></td>
                                         </tr>        
                                     ";
+                                    $count+=1;
                                 }
                             }
 

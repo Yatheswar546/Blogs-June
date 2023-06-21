@@ -29,13 +29,11 @@
 
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
+            $id = $_POST["id"];
             $title = $_POST["title"];
             $description = addslashes($_POST["description"]);
-            // $description = $_POST["description"];
             $category = $_POST["category"];
         
-            $blogid = md5(substr($title,0,3).substr($category,0,3).random_int(10000,99999));
-
             // Image Upload
             $target = '../../db-images/blogs/';
             $filename = $_FILES["image"]["name"];
@@ -44,13 +42,10 @@
             $file = md5("blogid".$filename).".".$filetype;
 
             do{
-                if(empty($title) || empty($description) || empty($category) || empty($file)){
-                    $msg = "All Fields are required";
-                }
-                else{
+                if(isset($_FILES['image']['tmp_name']) && !empty($_FILES['image']['tmp_name'])){
                     if($filetype == "jpg" || $filetype == "jpeg" || $filetype=="png"){
                         if(move_uploaded_file($_FILES["image"]["tmp_name"],$target_file)){
-                            $sql = mysqli_query($db, "INSERT INTO `blogs`(`title`, `description`, `image`, `category`, `author`, `blogid`) VALUES ('$title','$description','$file','$category','$name','$blogid')");
+                            $sql = mysqli_query($db, "UPDATE `blogs` SET `title`='$title',`description`='$description', `image`='$file',`category`='$category' WHERE id=$id");
                             if($sql){
                                 $msg = "Success";
                                 header("Location: index.php");
@@ -68,8 +63,20 @@
                         $msg = "Image Not Accepted";
                     }
                 }
+                else{
+                    $sql = mysqli_query($db, "UPDATE `blogs` SET `title`='$title',`description`='$description',`category`='$category' WHERE id=$id");
+                    if($sql){
+                        $msg = "Success";
+                        header("Location: index.php");
+                        exit;
+                    }
+                    else{
+                        $msg = "Something went wrong". mysqli_error($db);
+                    }
+                }
             }while(false);
         }
+    
 ?>
  
 <!DOCTYPE html>
@@ -132,13 +139,14 @@
                 ?>
 
                 <form action="#" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <div>
                         <label>Title</label>
                         <input type="text" name="title" id="" class="text-input" value="<?php echo $title; ?>">
                     </div>
                     <div>
                         <label>Description</label>
-                        <textarea name="description" id="description" rows="30" cols="178"> <?php echo $description; ?>+ </textarea>
+                        <textarea name="description" id="body" rows="30" cols="178"> <?php echo $description; ?>+ </textarea>
                     </div>
                     <div>
                         <label>Image</label>
@@ -156,7 +164,7 @@
                         <input type="text" name="category" id="category" class="text-input" value="<?php echo $category; ?>">
                     </div>
                     <div>
-                        <button type="submit" class="admin-btn btn-blg">Add Post</button>
+                        <button type="submit" class="admin-btn btn-blg">Edit Post</button>
                     </div>
                 </form>
 

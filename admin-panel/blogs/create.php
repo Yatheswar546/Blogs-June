@@ -122,7 +122,7 @@
                         <label>Title</label>
                         <input type="text" name="title" id="" class="text-input">
                     </div>
-                    <div>
+                    <div> 
                         <label>Description</label>
                         <textarea name="description" id="body" rows="30" cols="178"></textarea>
                     </div>

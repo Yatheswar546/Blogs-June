@@ -47,7 +47,7 @@
                 <li><a href="./admin-panel/blogs/index.php">Create a Blog</a></li>
                 <li><a href="./logout.php" class="logout" onclick='return checklogout()'>LOGOUT</a></li>
             <?php else: ?>
-                <li><a href="./login.php">Login</a></li>
+                <li><a href="./login.php">Login</a></li> 
             <?php endif; ?>
 
         </ul>
