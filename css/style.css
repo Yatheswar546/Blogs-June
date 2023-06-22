@@ -36,7 +36,7 @@ nav.navbar {
 }
 
 .navbar .logo h1 {
-    font-size: 50px;
+    font-size: 40px;
     color: var(--white);
     line-height: 100px;
     margin-left: 100px;
@@ -111,6 +111,30 @@ nav.navbar {
     .navbar ul.links.active {
         right: -100px;
         display: block;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .navbar .logo h1 {
+        font-size: 30px;
+    }
+    .menu_open,
+    .menu_close {
+        margin-right: 50px;
+    }
+}
+
+@media(max-width: 430px) {
+    .navbar .logo h1 {
+        font-size: 25px;
+        margin-left: 50px;
+    }
+}
+
+@media(max-width: 400px) {
+    .navbar .logo h1 {
+        font-size: 25px;
+        margin-left: 50px;
     }
 }
 

@@ -30,7 +30,7 @@
     <!----------- Navbar --------------->
     <nav class="navbar">
         <div class="logo">
-            <h1>Logo</h1>
+            <h1>The Blog Hub</h1>
         </div>
         <div class="menu_open">
             <i class='bx bx-menu'></i>
