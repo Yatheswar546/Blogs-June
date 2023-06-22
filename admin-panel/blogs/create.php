@@ -68,7 +68,7 @@
     <title>Blogs - June</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../../css/admin.css">
 
     <!-- Box Icons Link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -155,7 +155,7 @@
     <!----- CkEditor 5 Script -------------------->
     <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
 
-    <script src="../js/script.js"></script>
+    <script src="../../js/main.js"></script>
 
 </body>
 

@@ -21,7 +21,7 @@
     <title>Blogs - June</title>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../../css/admin.css">
 
     <!-- Box Icons Link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
